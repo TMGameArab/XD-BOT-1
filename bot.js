@@ -1507,37 +1507,6 @@ client.on("roleCreate", rc => {
   .setTimestamp(); 
   channel.sendEmbed(embed)
   }
-  });
-client.on("message", message => {
-    var prefix = "XD";
-    if (message.author.id === client.user.id) return;
-    const command = message.content.split(" ")[0];
-    if(command == prefix+"vc"){
-
-        if (!message.guild.member(message.author).hasPermission('MOVE_MEMBERS') || !message.guild.member(message.author).hasPermission('ADMINISTRATOR')) {
-            return message.reply('you do not have permission to perform this action!');
-        }
-
-        var member = message.guild.members.get(message.mentions.users.array()[0].id);
-        if(!message.mentions.users){
-            message.reply("please mention the member")
-            return;
-        }
-
-    if(!member.voiceChannel){
-    message.reply("i can't include voice channel for member!")
-    return;
-    }
-       if(!message.member.hasPermission('ADMINSTRATOR')) return message.reply('** الأمر للأدره فقط **')
-              message.guild.createChannel('voicekick', 'voice').then(c => {
-                member.setVoiceChannel(c).then(() => {
-                    c.delete(305).catch(console.log)
-        
-
-
-      });
-     });
-    }
-});
+ });
 
 client.login('NDU4ODkxNDY2MjY2MTE2MDk4.DguPgw.-KD0CEJQp_QKAt87SbsJQn8BuSc');
