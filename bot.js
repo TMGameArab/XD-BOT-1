@@ -1521,12 +1521,12 @@ client.on("roleCreate", rc => {
  });
 
 client.on('guildMemberAdd', member => {
-var welcomer =  member.guild.channels.find('name', 'welcome');
+const welcomer =  member.guild.channels.find('name', 'welcome');
 
 var Canvas = require('canvas')
 var jimp = require('jimp')
 
-const w = [``];
+const w = [`./welcome.png`];
 
 let Image = Canvas.Image,
 canvas = new Canvas(401, 202),
@@ -1564,14 +1564,7 @@ ctx.fontSize = '10px';
 ctx.fillStyle = "#000000";
 ctx.textAlign = "center";
 ctx.fillText(member.user.username, 200, 154);
-    
-//NAMEً
-ctx.font = '20px Arial';
-ctx.fontSize = '28px';
-ctx.fillStyle = "#FFFFFF";
-ctx.textAlign = "center";
-ctx.fillText(`انت العضو رقم  ${member.guild.memberCount} !! `, 200, 190);
-welcomer.sendFile(canvas.to1Buffer())
+welcomer.sendFile(canvas.toBuffer())
 
 
 
