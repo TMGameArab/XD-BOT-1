@@ -3,7 +3,6 @@ const ms = require("ms");
 const fs = require("fs");
 var Canvas = require('canvas');
 var jimp = require('jimp');
-var filesystem = require('file-system');
 const client = new Discord.Client();
 
 client.on('ready', () => {
