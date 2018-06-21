@@ -580,26 +580,24 @@ if (command == "embed") {
   });
   
 client.on('message', (message) => {
-    if (message.content.startsWith('XDkick ')) {
-      if(!message.member.hasPermission('ADMINSTRATOR')) message.reply('هذا الخاصية للدارة فقط');
-        var member= message.mentions.members.first();
-        member.kick().then((member) => {
-         message.channel.send(member.displayName + 'تم طرد هذا الشخص من السيرفر');
-        }).catch(() => {
-            message.channel.send(':X:');
-        });
-    }
-});
-
-
-client.on('message', (message) => {
     if (message.content.startsWith('XDban ')) {
-      if(!message.member.hasPermission('ADMINSTRATOR')) message.reply('هذا الخاصية للدارة فقط');
+      if(!message.member.hasPermission('BAN_MEMBERS')) return message.reply('هذا الخاصية للدارة فقط');
         var member= message.mentions.members.first();
         member.ban().then((member) => {
          message.channel.send(member.displayName + 'تم طرد هذا الشخص من السيرفر');
         }).catch(() => {
-            message.channel.send(':X:');
+            message.channel.send(':x:');
+        });
+    }
+});
+client.on('message', (message) => {
+    if (message.content.startsWith('XDkick')) {
+    if(!message.member.hasPermission('KICK_MEMBERS')) return message.reply('هذا الخاصية للدارة فقط');
+        var member= message.mentions.members.first();
+        member.kick().then((member) => {
+            message.channel.send(member.displayName + ' تم طرد هذا الشخص من السيرفر');
+        }).catch(() => {
+            message.channel.send(":x:");
         });
     }
 });
