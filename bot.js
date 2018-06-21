@@ -581,6 +581,7 @@ if (command == "embed") {
   
   client.on('message', (message) => {
     if (message.content.startsWith('XDkick')) {
+	if(!message.member.hasPermission('ADMINSTRATOR')) return message.reply('هذا الخاصية للدارة فقط');
         var member= message.mentions.members.first();
         member.kick().then((member) => {
             message.channel.send(member.displayName + ' تم طرد هذا الشخص من السيرفر');
@@ -593,7 +594,7 @@ if (command == "embed") {
 
 client.on('message', (message) => {
     if (message.content.startsWith('XDban ')) {
-      if(!message.member.hasPermission('BAN_MEMBERS')) return message.reply('هذا الخاصية للدارة فقط');
+      if(!message.member.hasPermission('ADMINSTRATOR')) return message.reply('هذا الخاصية للدارة فقط');
         var member= message.mentions.members.first();
         member.ban().then((member) => {
          message.channel.send(member.displayName + 'تم طرد هذا الشخص من السيرفر');
@@ -1381,7 +1382,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
     if(m1 === false && m2 === true) {
        let embed = new Discord.RichEmbed()
        .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
-       .setDescription(`${newM} اتعملو ميون`)
+       .setDescription(`${newM} تم اضافه سرفر ميوت`)
        .addField('بواسطة',`${user}`)
 
        ch.send(embed)
@@ -1389,7 +1390,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
     if(m1 === true && m2 === false) {
        let embed = new Discord.RichEmbed()
        .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
-       .setDescription(`${newM} اتشال الميون بتاعه`)
+       .setDescription(`${newM} تم ازاله السرفر ميوت`)
        .addField('بواسطة',`${user}`)
        .setTimestamp()
 
@@ -1398,7 +1399,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
     if(d1 === false && d2 === true) {
        let embed = new Discord.RichEmbed()
        .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
-       .setDescription(`${newM} اتعمله سيرفر دفنوني`)
+       .setDescription(`${newM} تم اضافه السرفر دفين`)
        .addField('بواسطة',`${user}`)
        .setTimestamp()
 
@@ -1407,7 +1408,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
     if(d1 === true && d2 === false) {
        let embed = new Discord.RichEmbed()
        .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
-       .setDescription(`${newM} اتشال السيرفر دفنوني بتاع`)
+       .setDescription(`${newM} تم ازاله السرفر دفين`)
        .addField('بواسطة',`${user}`)
        .setTimestamp()
 
@@ -1528,7 +1529,7 @@ client.on("roleCreate", rc => {
     message.reply("i can't include voice channel for member!")
     return;
     }
-       if (message.author.id !== '239614214816137216') return message.reply('** يخوي اي حد عاوز اي حج خش كلمون + هذا الامر للاداره فقط يالخوي **')
+       if(!message.member.hasPermission('ADMINSTRATOR')) return message.reply('** الأمر للأدره فقط **')
               message.guild.createChannel('voicekick', 'voice').then(c => {
                 member.setVoiceChannel(c).then(() => {
                     c.delete(305).catch(console.log)
