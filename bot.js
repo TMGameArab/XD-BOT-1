@@ -561,7 +561,7 @@ if (command == "embed") {
   
   client.on('message', (message) => {
     if (message.content.startsWith('XDkick')) {
-	if(!message.member.hasPermission('kick_MEMBERS')) return message.reply('هذا الخاصية للدارة فقط');
+	if(!message.member.hasPermission('KICK_MEMBERS')) return message.reply('هذا الخاصية للدارة فقط');
         var member= message.mentions.members.first();
         member.kick().then((member) => {
             message.channel.send(member.displayName + ' تم طرد هذا الشخص من السيرفر');
