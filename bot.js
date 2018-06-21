@@ -1508,11 +1508,10 @@ client.on("roleCreate", rc => {
   channel.sendEmbed(embed)
   }
   });
-  client.on("message", message => {
-    var prefix = ".";
+client.on("message", message => {
+    var prefix = "XD";
     if (message.author.id === client.user.id) return;
     const command = message.content.split(" ")[0];
-
     if(command == prefix+"vc"){
 
         if (!message.guild.member(message.author).hasPermission('MOVE_MEMBERS') || !message.guild.member(message.author).hasPermission('ADMINISTRATOR')) {
