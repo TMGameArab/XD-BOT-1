@@ -1529,7 +1529,7 @@ const w = [``];
 
 let Image = Canvas.Image,
 canvas = new Canvas(401, 202),
-ctx = canvas.getContext('2d');
+ctx = canvas.getContext('3d');
 ctx.patternQuality = 'bilinear';
 ctx.filter = 'bilinear';
 ctx.antialias = 'subpixel';
