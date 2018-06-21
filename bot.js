@@ -1,4 +1,8 @@
 const Discord = require("discord.js");
+const ms = require("ms");
+const fs = require("fs");
+var jimp = require('jimp');
+var Canvas = require('canvas');
 const client = new Discord.Client();
 
 client.on('ready', () => {
@@ -32,6 +36,10 @@ client.on("message", message => {
       .addField("Ahmed Atia#4432『مصمم البوت』", true)
       
       .addField("『XhelpD』😘『اذا تبي جميع الاوامر مع اوامر اضافية』😵", true)
+      
+	    .addField("『XhelpDD』👻『اذا تبي الاوامر العامة』😳", true)
+	    
+      .addField("『XhelpDDD』😮『اذا تبي  الاوامر الادارية』🤒", true)
       
       .addField("『🤑』『قريبا سوف نضيف المزيد و المزيد من الاوامر 』『😉』", true)
       
@@ -219,11 +227,11 @@ client.on("message", message => {
 -😎 سهل الاستخدام 
 -⚠ صيانه كل يوم
 -💵 مجاني بل كامل 
--📚 البوت عربي و سيتم اضافه اللغه الانجليزيه
+-📚 البوت عربي و سيتم اضافه اللغه النكليزية
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
 
-💎『الاوامر』💎
+💎『اوامر عامة』💎
                         
 💎XDserver 『معلومات عن السيرفر』                      
 
@@ -249,7 +257,7 @@ client.on("message", message => {
 
 👑XDrooms 『لمعرفه عدد رومات السيرفر』
 
-👑XDban 『لتعطي شخص بان』
+👑XDban 『لتعطي شخص باند』
 
 👑XDkick 『لتعطي شخص كيك』
 
@@ -263,17 +271,21 @@ client.on("message", message => {
 
 👑XDdelet  『كـود يحذف الـروم سواء صوتي او كتابي』
 
+👑XDmute  『كـود الميوت』
+
+👑XDunmute  『كـود فك الميوت』
+
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
 
 🎲『القرعة』🎲
 
-🎲XDroll 1   『جيف اوي من 1 الى 25』
+🎲XDroll 1   『القرعة من 1 الى 25』
 
-🎲XDroll 2   『جيف اوي من 1 الى 50』
+🎲XDroll 2   『القرعة من 1 الى 50』
 
-🎲XDroll 3   『جيف اوي من 1 الى 75』
+🎲XDroll 3   『القرعة من 1 الى 75』
 
-🎲XDroll 4   『جيف اوي من 1 الى 100』
+🎲XDroll 4   『القرعة من 1 الى 100』
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
 
@@ -296,27 +308,18 @@ client.on("message", message => {
 🎴قريبا
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
-『انواع الترحيب』🎎
 
-ترحيب 1 
+🎎『انواع الترحيب』🎎
 
-ترحيب 2 
+🎎 ترحيب 1 / ترحيب 2 
 
-ترحيب 3
+🎎 ترحيب 3 / ترحيب 4
 
-ترحيب 4
+🎎 ترحيب 5 / ترحيب 6 
 
-ترحيب 5
+🎎 ترحيب 7 / ترحيب 8
 
-ترحيب 6 
-
-ترحيب 7
-
-ترحيب 8
-
-ترحيب 9
-
-ترحيب 10
+🎎 ترحيب 9 / ترحيب 10
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
 
@@ -338,6 +341,10 @@ XDsupport| القسم الثاني  الدعم الفني و المساعدة
 
 
 message.author.sendEmbed(embed)
+
+.catch(() => {
+  message.channel.send('🚫الخاص مغلق');
+});
 
 }
 }); 
@@ -375,6 +382,10 @@ client.on("message", message => {
 
 👑XDrooms 『لمعرفه عدد رومات السيرفر』
 
+👑XDmute  『كـود الميوت』
+
+👑XDunmute  『كـود فك الميوت』
+
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
 
@@ -399,6 +410,9 @@ EMAIL
 
 
 message.author.sendEmbed(embed)
+.catch(() => {
+   message.channel.send('🚫الخاص مغلق');
+});
 
 }
 }); 
@@ -406,9 +420,8 @@ message.author.sendEmbed(embed)
 
 
 client.on("message", message => {
- if (message.content === "^helpXD") {
-        message.react("😳")
-                message.react("👻")
+ if (message.content === "XhelpDD") {
+  message.react("😂")
   const embed = new Discord.RichEmbed() 
       .setColor("#ffff00")
       .setThumbnail(message.author.avatarURL)
@@ -455,10 +468,12 @@ EMAIL
 
 
 message.author.sendEmbed(embed)
+.catch(() => {
+  message.channel.send('🚫الخاص مغلق');
+});
 
 }
 }); 
-
 
 client.on('message', message => {
     if (message.content.startsWith("XDavatar")) {
@@ -570,7 +585,6 @@ if (command == "embed") {
   
   client.on('message', (message) => {
     if (message.content.startsWith('XDkick')) {
-	if(!message.member.hasPermission('KICK_MEMBERS')) return message.reply('هذا الخاصية للدارة فقط');
         var member= message.mentions.members.first();
         member.kick().then((member) => {
             message.channel.send(member.displayName + ' تم طرد هذا الشخص من السيرفر');
@@ -588,7 +602,7 @@ client.on('message', (message) => {
         member.ban().then((member) => {
          message.channel.send(member.displayName + 'تم طرد هذا الشخص من السيرفر');
         }).catch(() => {
-            message.channel.send(':x:');
+            message.channel.send('Error :_:');
         });
     }
 });
@@ -834,7 +848,31 @@ client.on('message', message => {
      let embed = new Discord.RichEmbed()
   .setAuthor(message.author.username)
   .setColor("#9B59B6")
-  .addField(" Done | تــــم" , " |  تــــم ارســالك في الانبوكس")
+  .addField(" Done | تــــم" , " |  تــــم ارســالك في الخــاص")
+     
+     
+     
+  message.channel.sendEmbed(embed);
+    }
+});
+
+client.on('message', message => {
+  if (true) {
+if (message.content === 'رابط') {
+      message.author.send(' |https://discord.gg/QUf4W9k| رابط السرفر').catch(e => console.log(e.stack));
+
+    }
+   } 
+  });
+  
+  
+
+client.on('message', message => {
+     if (message.content === "رابط") {
+     let embed = new Discord.RichEmbed()
+  .setAuthor(message.author.username)
+  .setColor("#9B59B6")
+  .addField(" Done | تــــم" , " |  تــــم ارســالك في الخــاص")
      
      
      
@@ -846,7 +884,7 @@ client.on('message', message => {
 client.on('message', message => {
   if (true) {
 if (message.content === 'XDinvite') {
-      message.author.send(' رابط البوت |  https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=2146958588585 ').catch(e => console.log(e.stack));
+      message.author.send(` رابط البوت |  https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=2146958588585 `).catch(e => console.log(e.stack));
 
     }
    } 
@@ -859,7 +897,7 @@ client.on('message', message => {
      let embed = new Discord.RichEmbed()
   .setAuthor(message.author.username)
   .setColor("#9B59B6")
-  .addField(" Done | تــــم" , " |  تــــم ارســالك في الانبوكس")
+  .addField(" Done | تــــم" , " |  تــــم ارســالك في الخــاص")
      
      
      
@@ -1189,6 +1227,53 @@ client.on('message', message => {
   }
 });
 
+client.on('message', message => {
+var prefix = "XD";
+
+if (!message.content.startsWith(prefix)) return;
+var args = message.content.split(' ').slice(1);
+var argresult = args.join(' ');
+if (message.author.id == 281425658494844928) return;
+if (message.content.startsWith(prefix + 'playing')) {
+if (message.author.id !== '281425658494844928') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+client.user.setGame(argresult);
+ message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
+} else
+
+
+if (message.content.startsWith(prefix + 'stream')) {
+if (message.author.id !== '281425658494844928') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+client.user.setGame(argresult, "http://twitch.tv/y04zgamer");
+ message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
+} else
+
+if (message.content.startsWith(prefix + 'setname')) {
+if (message.author.id !== '281425658494844928') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+client.user.setUsername(argresult).the
+message.channel.sendMessage(`**${argresult}** : تم تغير الأسم`)
+return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
+} else
+ 
+if (message.content.startsWith(prefix + 'setavatar')) {
+if (message.author.id !== '281425658494844928') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+client.user.setAvatar(argresult);
+ message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+} else
+
+
+if (message.content.startsWith(prefix + 'watching')) {
+if (message.author.id !== '281425658494844928') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+ client.user.setActivity(argresult, {type : 'watching'});
+message.channel.sendMessage(`**${argresult}** : تم تغيير الووتشينق الى`)
+}
+if (message.content.startsWith(prefix + 'listeing')) {
+if (message.author.id !== '281425658494844928') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+client.user.setActivity(argresult, {type : 'listening'});
+message.channel.sendMessage(`**${argresult}**: تم تغير الاستماع الي`)
+}
+
+});
+
 client.on("message", message => {
   if (message.author.bot) return;
   
@@ -1254,5 +1339,4 @@ return message.reply("**:white_check_mark: تم فك الميوت عن الشخ�
 
 });
 
-
-client.login('NDU4ODkxNDY2MjY2MTE2MDk4.DgyWoA.TJg0Y5Ws9Oeg_bZEMOub2VRfef4');
+client.login('NDU4ODkxNDY2MjY2MTE2MDk4.DguPgw.-KD0CEJQp_QKAt87SbsJQn8BuSc');
