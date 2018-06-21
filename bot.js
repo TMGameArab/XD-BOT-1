@@ -561,6 +561,7 @@ if (command == "embed") {
   
   client.on('message', (message) => {
     if (message.content.startsWith('XDkick')) {
+	if(!message.member.hasPermission('kick_MEMBERS')) return message.reply('هذا الخاصية للدارة فقط');
         var member= message.mentions.members.first();
         member.kick().then((member) => {
             message.channel.send(member.displayName + ' تم طرد هذا الشخص من السيرفر');
@@ -578,7 +579,7 @@ client.on('message', (message) => {
         member.ban().then((member) => {
          message.channel.send(member.displayName + 'تم طرد هذا الشخص من السيرفر');
         }).catch(() => {
-            message.channel.send('Error :_:');
+            message.channel.send(':x:');
         });
     }
 });
