@@ -1520,8 +1520,7 @@ client.on("roleCreate", rc => {
  });
 
 client.on("guildMemberAdd", member => {
-      const welcomer = bot.channels.get("459197992583430169");
-      //*let welcomer = member.guild.channels.find("name","welcome");
+      const welcomer = member.guild.channels.find('name', 'welcome');
       if(!welcomer) return;
       if(welcomer) {
          moment.locale('ar-ly');
