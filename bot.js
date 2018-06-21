@@ -1,8 +1,4 @@
 const Discord = require("discord.js");
-const ms = require("ms");
-const fs = require("fs");
-var jimp = require('jimp');
-var Canvas = require('canvas');
 const client = new Discord.Client();
 
 client.on('ready', () => {
