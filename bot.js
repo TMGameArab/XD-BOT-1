@@ -1585,17 +1585,4 @@ welcomer.sendFile(canvas.toBuffer())
 })
 });
 
-client.on('guildMemberAdd', (member) => {
-    function autoRole() {
-      let guild = member.guild
-      let role = guild.settings.get('autorole')
-      if (!role) return
-      //eslint-disable-next-line no-useless-return
-      if (member.bot) return
-      member.addRole(role, '! XD.')
-    }
-
-    autoRole()
-});
-
 client.login(process.env.BOT_TOKEN);
