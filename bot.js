@@ -1451,4 +1451,4 @@ welcomer.sendFile(canvas.toBuffer())
 })
 });
 
-client.login(process.env.BOT TOKEN);
+client.login('process.env.BOT TOKEN');
