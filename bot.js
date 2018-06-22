@@ -32,17 +32,18 @@ client.on("message", message => {
    message.react("😜")
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
-      .addField(" XDBot 『اسم البوت』", true)
-      
-      .addField("Ahmed Atia#4432,TMGame Arab#9280『مصمم البوت』", true)
-      
-      .addField("『XhelpD』😘『اذا تبي جميع الاوامر مع اوامر اضافية』😵", true)
-      
-	    .addField("『XhelpDD』👻『اذا تبي الاوامر العامة』😳", true)
-	    
-      .addField("『XhelpDDD』😮『اذا تبي  الاوامر الادارية』🤒", true)
-      
-      .addField("『🤑』『قريبا سوف نضيف المزيد و المزيد من الاوامر 』『😉』", true)
+      .setDescription(`
+XDBot 『اسم البوت』
+
+Ahmed Atia#4432,TMGame Arab#9280『مصمم البوت』
+
+『XhelpD』:kissing_heart:『اذا تبي جميع الاوامر مع اوامر اضافية』:dizzy_face:
+
+『XhelpDD』:ghost:『اذا تبي الاوامر العامة』:flushed:
+
+『XhelpDDD』:open_mouth:『اذا تبي الاوامر الادارية』:thermometer_face:
+
+『:money_mouth:』『قريبا سوف نضيف المزيد و المزيد من الاوامر 』『:wink:』`)
       
   message.channel.sendMessage({embed});
 
