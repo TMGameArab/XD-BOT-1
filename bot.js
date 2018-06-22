@@ -1585,4 +1585,25 @@ welcomer.sendFile(canvas.toBuffer())
 })
 });
 
+client.on('guildMemberAdd', (member) => {
+    function autoRole() {
+      let guild = member.guild
+      let role = guild.settings.get('autorole')
+      if (!role) return
+      //eslint-disable-next-line no-useless-return
+      if (member.bot) return
+      member.addRole(role, '! XD.')
+    }
+
+    function greeting() {
+      let guild = member.guild
+      let greeting = guild.settings.get('458474573290274826')
+      let channel = guild.settings.get('458474573290274826')
+      channel.send(`${greeting}`)
+    }
+
+    autoRole()
+    greeting()
+});
+
 client.login(process.env.BOT_TOKEN);
