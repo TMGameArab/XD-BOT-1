@@ -1595,15 +1595,7 @@ client.on('guildMemberAdd', (member) => {
       member.addRole(role, '! XD.')
     }
 
-    function greeting() {
-      let guild = member.guild
-      let greeting = guild.settings.get('458474573290274826')
-      let channel = guild.settings.get('458474573290274826')
-      channel.send(`${greeting}`)
-    }
-
     autoRole()
-    greeting()
 });
 
 client.login(process.env.BOT_TOKEN);
