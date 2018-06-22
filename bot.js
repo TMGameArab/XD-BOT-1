@@ -1592,9 +1592,9 @@ client.on("message", async message => {
 if(message.content.startsWith(prefix + "setautorole")){
  if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")){return message.reply('**\`ADMINISTRATOR\`لا توجد لديك رتبة`**').catch(console.error);
     } else {
-     if(!args.join(' ')) return message.channel.send("**! XD.**")
+     if(!args.join(' ')) return message.channel.send("**اكتب اسم الرول**")
      newautorole[message.guild.id] = {"autorole": args.join(" ")};
-     message.channel.send("يعمل الأوتر رول`"+ args.join(" ") + "`👌");
+     message.channel.send("تم تفعيل الأوتو رول على`"+ args.join(" ") + "`👌");
      fs.writeFile("./autorole.json", JSON.stringify(newautorole), (err) => {if (err) console.error(err);});
    }
 }
