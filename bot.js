@@ -3,6 +3,7 @@ const ms = require("ms");
 const fs = require("fs");
 var Canvas = require('canvas');
 var jimp = require('jimp');
+const fs = require('fs-extra');
 var file = require('file-system');
 const client = new Discord.Client();
 
@@ -1583,6 +1584,21 @@ welcomer.sendFile(canvas.toBuffer())
 
 })
 })
+});
+
+client.on("message", async message => {
+  let args = message.content.split(' ').slice(1)
+  let newautorole = JSON.parse(fs.readFileSync("./autorole.json", "utf8"));
+if(message.content.startsWith(prefix + "setautorole")){
+ if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")){return message.reply('**\`ADMINISTRATOR\`لا توجد لديك رتبة`**').catch(console.error);
+    } else {
+     if(!args.join(' ')) return message.channel.send("**! XD.**")
+     newautorole[message.guild.id] = {"autorole": args.join(" ")};
+     message.channel.send("يعمل الأوتر رول`"+ args.join(" ") + "`👌");
+     fs.writeFile("./autorole.json", JSON.stringify(newautorole), (err) => {if (err) console.error(err);});
+   }
+}
+
 });
 
 client.login(process.env.BOT_TOKEN);
