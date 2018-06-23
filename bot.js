@@ -1656,7 +1656,7 @@ delete warn[message.author.id];
 });
 
 let al = JSON.parse(fs.readFileSync(`./antilinks.json`, `utf8`));
-var prefix = '!'
+var prefix = 'XD'
 
 
 client.on('message', message => {
