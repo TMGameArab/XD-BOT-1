@@ -287,4 +287,4 @@ def setup(bot):
  
  
  
-client.run("Token")
+client.run("NDU4ODkxNDY2MjY2MTE2MDk4.DguPgw.-KD0CEJQp_QKAt87SbsJQn8BuSc")
